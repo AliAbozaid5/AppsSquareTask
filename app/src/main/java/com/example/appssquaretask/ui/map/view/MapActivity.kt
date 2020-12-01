@@ -41,7 +41,7 @@ class MapActivity : AppCompatActivity() , OnMapReadyCallback{
             googleMap=it
             val location =LatLng(30.674774,30.9392334)
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location,10f))
-            googleMap.setOnMapLongClickListener {
+            googleMap.setOnMapClickListener {
                 if(latlngList.size==2){
                     googleMap.clear()
                     latlngList.clear()
@@ -61,24 +61,27 @@ class MapActivity : AppCompatActivity() , OnMapReadyCallback{
 
                 }
 
-
-//                Toast.makeText(this,it.latitude.toString(),Toast.LENGTH_LONG).show()
             }
+//            googleMap.setOnMapLongClickListener {
+//
+//
+////                Toast.makeText(this,it.latitude.toString(),Toast.LENGTH_LONG).show()
+//            }
         }
         goBtn.setOnClickListener(View.OnClickListener {
             if(latlngList.size==2){
-//
-//                val polyline1 = googleMap.addPolyline(PolylineOptions()
-//                    .clickable(true)
-//                    .add(
-//                        LatLng(latlngList.get(0).latitude,latlngList.get(0).longitude),
-//                        LatLng(latlngList.get(1).latitude,latlngList.get(1).longitude)))
+
+                val polyline1 = googleMap.addPolyline(PolylineOptions()
+                    .clickable(true)
+                    .add(
+                        LatLng(latlngList.get(0).latitude,latlngList.get(0).longitude),
+                        LatLng(latlngList.get(1).latitude,latlngList.get(1).longitude)))
 
 
-                        Log.d("GoogleMap", "before URL")
-                        val URL = getDirectionURL(latlngList.get(0),latlngList.get(1))
-                        Log.d("GoogleMap", "URL : $URL")
-                        GetDirection(URL).execute()
+//                        Log.d("GoogleMap", "before URL")
+//                        val URL = getDirectionURL(latlngList.get(0),latlngList.get(1))
+//                        Log.d("GoogleMap", "URL : $URL")
+//                        GetDirection(URL).execute()
             }
 
         })
